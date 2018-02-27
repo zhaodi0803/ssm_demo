@@ -2,8 +2,8 @@ package controller;
 
 import org.springframework.stereotype.Controller;
 
-@Controller
-public class Client {
+@Controller(value="clientss")
+public class ClientController {
 
 
 }
