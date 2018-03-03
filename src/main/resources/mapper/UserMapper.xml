@@ -5,7 +5,7 @@
 <mapper namespace="dao.UserDao">
 
 
-    <select id="getUser" resultType="User">
+    <select id="getUser" resultType="user">
         SELECT * FROM user WHERE id = 1
     </select>
 </mapper>

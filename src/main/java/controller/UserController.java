@@ -19,7 +19,7 @@ public class UserController {
         System.out.println("addUser........");
 
         User user = new User();
-        System.out.println(iUserService.getUser());
+        System.out.println(iUserService.getUser().getEmail());
         return "添加成功";
     }
 }
