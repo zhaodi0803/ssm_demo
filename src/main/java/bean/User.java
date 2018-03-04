@@ -1,6 +1,7 @@
 package bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -12,6 +13,25 @@ public class User {
     private int status;
     private Date regTime;
     private String regIp;
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
+
+    private List<Card> cards;
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    private Card card;
 
     public long getId() {
         return id;

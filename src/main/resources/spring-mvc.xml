@@ -17,6 +17,17 @@
     <!-- 开启注解扫描 扫描类 方法  属性上面是否有注解-->
     <context:component-scan base-package="controller,service,dao"></context:component-scan>
 
+    <!--JSON返回 这样才可以使用@ResponseBody注解-->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+            </list>
+        </property>
+    </bean>
+    <context:annotation-config />
+
+
 
 
 

@@ -5,7 +5,70 @@
 <mapper namespace="dao.UserDao">
 
 
-    <select id="getUser" resultType="user">
-        SELECT * FROM user WHERE id = 1
+    <resultMap id="userMap" type="user">
+        <id property="id" column="id"/>
+        <result property="username" column="user_name"></result>
+    </resultMap>
+
+    <select id="getUser" resultMap="userMap" useCache="false">
+        SELECT user_name FROM user where 1= 1
+        <if test="id != null and id != ''">
+            AND id = #{id}
+        </if>
+        <if test="username!=null">
+            and user_name LIKE '%${username}%'
+        </if>
+
     </select>
+
+    <insert id="addUser" parameterType="user">
+        INSERT INTO user VALUES (#{id},#{username},#{password})
+    </insert>
+
+
+    <update id="updateUser" parameterType="user">
+        UPDATE user
+        <set>
+            <if test="username!=null">
+                user_name = #{username},
+            </if>
+            <if test="password!=null">
+                pass_word = #{password}
+            </if>
+        </set>
+    </update>
+
+
+    <delete id="deleteUser" parameterType="user">
+        DELETE FROM user WHERE
+        user_name=#{username}
+    </delete>
+
+
+    <!--一对一关联映射
+
+    -->
+
+
+    <resultMap id="user_card_map" type="user">
+        <id property="id" column="id"></id>
+        <result property="username" column="user_name"></result>
+        <result property="password" column="pass_word"></result>
+        <!--
+        property:card  属性名
+        column:封装对象的主键
+        javaType:封装对象类型
+        -->
+        <collection property="cards" column="card_id" javaType="list" ofType="card">
+            <result property="cardId" column="card_id"></result>
+            <result property="cardName" column="card_name"></result>
+        </collection>
+    </resultMap>
+    <select id="getUserAndCard" parameterType="user" resultMap="user_card_map">
+        SELECT * from user u JOIN  card c ON u.id = c.user_id
+    </select>
+
+
+
+
 </mapper>

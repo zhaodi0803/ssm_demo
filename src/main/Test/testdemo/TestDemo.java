@@ -6,10 +6,5 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestDemo {
 
-    @Test
-    public void test1  (){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-mvc.xml");
-        ClientServiceImpl clientService = (ClientServiceImpl) applicationContext.getBean("client");
-        clientService.addClient();
-    }
+
 }
