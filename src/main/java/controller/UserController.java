@@ -4,7 +4,6 @@ import bean.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import service.IUserService;
-
 import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
@@ -17,8 +16,6 @@ public class UserController {
     @RequestMapping(value = "/getUser",method = RequestMethod.GET)
     public User getUser( String id,  User user){
         System.out.println("getUser........");
-
-
 
         return iUserService.getUser(id,user.getUsername());
     }
