@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import service.ITeacherService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class TeacherServiceImpl implements ITeacherService {
@@ -23,5 +24,17 @@ public class TeacherServiceImpl implements ITeacherService {
 
     public Integer deleteTeacher(String id[]) {
         return teacherDao.deleteTeacher(id);
+    }
+
+    public List<Teacher> listTeacher(Teacher teacher) {
+        return teacherDao.listTeacher(teacher);
+    }
+
+    public List<Teacher> listTeacherAndClass(Teacher teacher) {
+        return teacherDao.listTeacherAndClass(teacher);
+    }
+
+    public List<Teacher> listTeacherAndClass1N(Teacher teacher) {
+        return null;
     }
 }

@@ -4,6 +4,8 @@ import bean.Teacher;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import service.ITeacherService;
+import sun.misc.Request;
+
 import java.util.*;
 import javax.annotation.Resource;
 
@@ -67,9 +69,32 @@ public class TeacherController {
         }else{
             return "删除教师失败";
         }
-
+    }
+    @RequestMapping(value = "/teacher",method = RequestMethod.GET)
+    @ResponseBody
+    public List<Teacher> listTeacher(Teacher teacher){
+        return teacherService.listTeacher(teacher);
     }
 
+    /**
+     * 一对一
+     * @param teacher
+     * @return
+     */
+    @RequestMapping(value = "/teacher_class",method = RequestMethod.GET)
+    @ResponseBody
+    public List<Teacher> listTeacherAndClass(Teacher teacher){
+        return teacherService.listTeacherAndClass(teacher);
+    }
 
-
+    /**
+     * 一对多
+     * @param teacher
+     * @return
+     */
+    @RequestMapping(value = "/teacher_class_1",method = RequestMethod.GET)
+    @ResponseBody
+    public List<Teacher> listTeacherAndClass1N(Teacher teacher){
+        return teacherService.listTeacherAndClass1N(teacher);
+    }
 }
