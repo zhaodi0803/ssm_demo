@@ -39,6 +39,23 @@
         VALUES (<include refid="value"></include>)
 
     </insert>
+    <!--更新-->
+    <update id="updateTeacher" parameterType="teacher">
+        UPDATE t_teacher
+          <set>
+            <if test="teacherName!=null and teacherName!=''">
+                teacher_name = #{teacherName},
+            </if>
+          </set>
+        WHERE teacher_id = #{teacherId}
+    </update>
 
+    <delete id="deleteTeacher">
+        DELETE FROM t_teacher
+        WHERE teacher_id IN
+        <foreach collection="array" index="index" item="item" open="(" close=")" separator=",">
+          #{item}
+        </foreach>
+    </delete>
 
 </mapper>

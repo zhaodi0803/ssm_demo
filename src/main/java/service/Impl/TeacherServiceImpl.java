@@ -12,7 +12,16 @@ public class TeacherServiceImpl implements ITeacherService {
     @Resource
     private TeacherDao teacherDao;
     public Integer addTeacher(Teacher teacher){
-        System.out.println("-----------teacher_service:"+teacher.toString());
+
         return teacherDao.addTeacher(teacher);
+    }
+
+    public Integer updateTeacher(Teacher teacher) {
+
+        return teacherDao.updateTeacher(teacher);
+    }
+
+    public Integer deleteTeacher(String id[]) {
+        return teacherDao.deleteTeacher(id);
     }
 }
