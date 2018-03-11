@@ -95,6 +95,7 @@ public class TeacherController {
     @RequestMapping(value = "/teacher_class_1",method = RequestMethod.GET)
     @ResponseBody
     public List<Teacher> listTeacherAndClass1N(Teacher teacher){
+        System.out.println("-------------");
         return teacherService.listTeacherAndClass1N(teacher);
     }
 }

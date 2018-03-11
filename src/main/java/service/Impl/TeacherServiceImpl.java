@@ -35,6 +35,6 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     public List<Teacher> listTeacherAndClass1N(Teacher teacher) {
-        return null;
+        return teacherDao.listTeacherANdClass1N(teacher);
     }
 }
