@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="dao.TeacherDao">
+
+
+    <sql id="insert_key">
+        <trim suffixOverrides=",">
+            <if test="teacherId!= null and teacherId != ''">
+                teacher_id,
+            </if>
+            <if test="teacherName!= null and teacherName != ''">
+                teacher_name,
+            </if>
+            <if test="createTime!= null and createTime != ''">
+                create_time,
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="value">
+        <trim suffixOverrides=",">
+            <if test="teacherId!= null and teacherId != ''">
+               #{teacherId},
+            </if>
+            <if test="teacherName!= null and teacherName != ''">
+                #{teacherName},
+            </if>
+            <if test="createTime!= null and createTime != ''">
+                #{createTime},
+            </if>
+        </trim>
+
+    </sql>
+    <!--增加-->
+    <insert id="addTeacher" parameterType="teacher">
+        INSERT INTO t_teacher(<include refid="insert_key"></include>)
+        VALUES (<include refid="value"></include>)
+
+    </insert>
+
+
+</mapper>
